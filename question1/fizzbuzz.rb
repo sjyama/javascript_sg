@@ -16,7 +16,7 @@ def countup(m)
     while x < m
         if x == 1
             print fizz_buzz(x)
-            else
+        else
             print ","
             print fizz_buzz(x)
         end
