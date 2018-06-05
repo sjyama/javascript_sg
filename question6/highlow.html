@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <script type="text/javascript">
+
+      var count = 0;
+      
+      function reset(){
+        count = 0;
+        kekka.innerHTML = "";
+      }
+
+      function judge(imp){
+        var ans = "";
+        if(count == 0){
+          num = Math.floor(Math.random() * 100) + 1;
+          kekka.innerHTML = num + "<br>";
+        }
+
+        count += 1;
+        if(num == imp){
+          ans = "あたり！！<br>入力回数：" + count;
+        }else if(num < imp){
+          ans = "もっと下";
+        }else if(num > imp){
+          ans = "もっと上";
+        }
+      kekka.innerHTML = kekka.innerHTML + "入力値：" + imp + "<br>判定結果：" + ans + "<br>";
+      }
+
+    </script>
+    <div id="begin">0-100で数字を当てて<br></div>
+    <div id="kekka"></div>
+    <input type="text" id="imp">
+    <input type="button" value="判定！" onclick="judge(imp.value)">
+    <input type="button" value="リセット" onclick="reset()">
+  </body>
+</html>
+
