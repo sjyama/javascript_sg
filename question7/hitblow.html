@@ -1,0 +1,107 @@
+<html>
+  <body>
+    <script type="text/javascript">
+
+      var count = 0;
+      var input_flg = true;
+      var input_num;
+      var answer;
+      var count_h = 0;
+      var count_b = 0;
+      
+      function reset(){
+        count = 0;
+        kekka.innerHTML = "";
+      }
+
+      function input_check(data){
+        // 桁数チェック
+        if(data.length == 4){
+          kekka.innerHTML = kekka.innerHTML + " 入力値: " + data + "<br>";
+          input_flg = true;
+        }else{
+          kekka.innerHTML = kekka.innerHTML + " 数字4桁で入力してください。入力値: " + data + "<br>";
+          input_flg = false;
+        }
+        // 数値チェック
+        if(input_flg == true){
+          data = Number(data);
+          if(isNaN(data)){
+            kekka.innerHTML = kekka.innerHTML + " 数字4桁で入力してください。入力値: " + data + "<br>";
+            input_flg = false;
+          }else{
+            // 配列にセット
+            input_num = new Array();
+            input_num.push(Math.floor(Math.floor(data % 10000) / 1000)); // 1000の位
+            input_num.push(Math.floor(Math.floor(data % 1000) / 100)); // 100の位
+            input_num.push(Math.floor(Math.floor(data % 100) / 10)); // 10の位
+            input_num.push(Math.floor(data % 10)); // 1の位
+          }
+        }
+      }
+
+      // 重複数字が存在しない４桁の値を作成
+      function randomarray(){
+        answer = new Array();
+        var n = 0;
+        while( n < 4){
+          num = Math.floor(Math.random() * 10);
+          // 重複がない数値の場合のみ配列に追加
+          if(answer.indexOf(num) == -1){
+            answer.push(num);
+            n += 1;
+          }
+        }
+      }
+
+      function hitcount(){
+        var x = 0;
+        count_h = 0;
+        while( x < input_num.length ){
+          if( input_num[x] == answer[x]){
+            count_h += 1;
+          }
+          x += 1;
+        }
+        kekka.innerHTML = kekka.innerHTML + count_h + "Hits, ";
+      }
+
+      function blowcount(){
+        var y = 0;
+        count_b = 0;
+        while( y < input_num.length ){
+          if( answer.indexOf(input_num[y]) !== -1 ){
+            count_b += 1;
+          }
+          y += 1;
+        }
+        kekka.innerHTML = kekka.innerHTML + count_b + "Blow <br>";
+      }
+
+      function main(inp){
+        count = Number(count);
+        input_check(inp);
+        if(input_flg == true){
+          if(count == 0){
+            randomarray();
+          }
+          count += 1;
+          if(input_num.toString() == answer.toString()){
+            kekka.innerHTML = kekka.innerHTML + count + "回で正解！<br>";
+          }else{
+            kekka.innerHTML = kekka.innerHTML + " 外れ：";
+            hitcount();
+            blowcount();
+          }
+        }
+      }
+
+    </script>
+    <div id="begin">4桁の数字は？<br></div>
+    <div id="kekka"></div>
+    <input type="text" id="inp">
+    <input type="button" value="判定！" onclick="main(inp.value)">
+    <input type="button" value="リセット" onclick="reset()">
+  </body>
+</html>
+
