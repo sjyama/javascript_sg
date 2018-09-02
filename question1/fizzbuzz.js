@@ -12,11 +12,9 @@ function fizz_buzz(x){
 }
 
 function countup(max){
-  var n = 1;
-  var ans = new Array();
-  while(n < max){
+  var ans = [];
+  for(var n = 1; n < max; n++){
     ans.push(fizz_buzz(n));
-    n = n + 1;
   }
   console.log(ans.join(', '));
 }
