@@ -1,40 +1,9 @@
+<!DOCTYPE html>
 <html>
+  <head>
+  </head>
   <body>
-    <script type="text/javascript">
-
-      function set(sent){
-        // 入力値を配列に格納
-        var sent_arr = sent.replace(/ /g,",").split(",");
-        // 単語と件数を連想配列に格納
-        var sent_hash = {};
-        for(var n in sent_arr){
-          if(sent_hash[sent_arr[n]]){
-            sent_hash[sent_arr[n]] += 1;
-          }
-          else{
-            sent_hash[sent_arr[n]] = 1;
-          }
-        }
-
-        // 出力
-        document.write("入力：'" + sent + "'" + "<br>");
-        document.write("出力：");
-        var a = 0;
-        for(key in sent_hash){
-          if(a == 0){
-            document.write("{ ");
-          }else{
-            document.write(", ");
-          }
-          document.write("'" + key + "' : " + sent_hash[key]);
-          a += 1;
-        }
-        document.write(" }");
-      }
-
-    </script>
-    <input type="text" id="sentence">
-    <input type="button" value="hash" onclick="set(sentence.value)">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="hash.js"></script>
   </body>
 </html>
-
