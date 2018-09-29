@@ -1,67 +1,9 @@
+<!DOCTYPE html>
 <html>
+  <head>
+  </head>
   <body>
-    <script type="text/javascript">
-
-      function randomm(){
-        return Math.floor(Math.random() * 3);
-      }
-
-      function janken(user){
-        var hands = ["グー", "チョキ", "パー"]
-        var kekka = "";
-        // ユーザーの手
-        var player = user;
-        // コンピューターの手
-        var computer = randomm();
-
-        // じゃんけん判定
-        if(player == computer){
-          // あいこ
-          kekka = "draw";
-        }else{
-          if(  player == 0 && computer == 1
-            || player == 1 && computer == 2 
-            || player == 2 && computer == 0 ){
-            // 勝ち
-            kekka = "win";
-          }else if( player == 0 && computer == 2
-                 || player == 1 && computer == 0 
-                 || player == 2 && computer == 1 ){
-            // 負け
-            kekka = "lose";
-          }else{
-            // その他
-            kekka = "err";
-          }
-        }
-
-        // 出力
-        poi.innerHTML = "「ぽい！」";
-        input_data.innerHTML = "＊あなた：" + hands[player] + "<br>＊コンピューター：" + hands[computer];
-        
-
-        if(kekka == "draw"){
-          comment.innerHTML = "「アイコでしょ！」";
-          kakegoe.innerHTML = "「じゃんけん・・・」<br> 0.グー 1.チョキ 2.パー<br>";
-        }else if(kekka == "win"){
-          comment.innerHTML = "「あなたの勝ち！」";
-          kakegoe.innerHTML = "";
-        }else if(kekka == "lose"){
-          comment.innerHTML = "「あなたの負け！」";
-          kakegoe.innerHTML = "";
-        }else{
-          comment.innerHTML = "「エラー！入力に誤りがあります！」";
-          kakegoe.innerHTML = "「じゃんけん・・・」<br> 0.グー 1.チョキ 2.パー（半角数字）<br>";
-        }
-      }
-
-    </script>
-    <div id="poi"></div>
-    <div id="input_data"></div>
-    <div id="comment"></div>
-    <div id="kakegoe">「じゃんけん・・・」<br> 0.グー 1.チョキ 2.パー<br></div>
-    <input type="text" id="user">
-    <input type="button" value="出す！" onclick="janken(user.value)">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="janken.js"></script>
   </body>
 </html>
-
