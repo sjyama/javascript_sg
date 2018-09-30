@@ -1,52 +1,9 @@
+<!DOCTYPE html>
 <html>
+  <head>
+  </head>
   <body>
-    <script type="text/javascript">
-
-      // 出力用function
-      function output(hash_cnv, n){
-        for(var key in hash_cnv){
-          document.write(key + " : ");
-          if(typeof(hash_cnv[key]) == "object"){
-            // 入れ子の場合は再帰
-            output(hash_cnv[key], n);
-          }else{
-            if(n == 0){ 
-              document.write(hash_cnv[key] + "<br>");
-            }else{
-              document.write(hash_cnv[key].replace("foo","uryyyy!!") + "<br>");
-            }
-          }
-        }
-      }
-
-      function main(){
-        var  hash = {
-              "main" : {
-                        "first" : { "text" : "foobar" },
-                        "second" : { "text" : "fizzbuzz", "child" : { "text" : "foobar" } }
-                       },
-
-              "sub" : {
-                        "first" : { "text" : "fizzbuzz", "child" : { "text" : "foobar" } },
-                        "second" : {
-                                    "third" : { "text" : "barfoo", "child" : { "text" : "foobar" } },
-                                    "forth" : { "child" : { "text" : "jit_foo_foo" } }
-                                    }
-                      },
-              "text" : "foofava"
-            };
-
-        // 出力
-        document.write("（変換前）<br>")
-        output(hash,0);
-        document.write("<br><br>（変換後）<br>")
-        output(hash,1);
-      }
-
-    </script>
-    <div id="begin">hash conv !!<br></div>
-    <div id="kekka"></div>
-    <input type="button" value="判定！" onclick="main()">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="hashconv.js"></script>
   </body>
 </html>
-
